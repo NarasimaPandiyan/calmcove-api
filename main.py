@@ -40,7 +40,7 @@ async def read_root(Message:str):
     )
     
     message_content = response['choices'][0]['message']['content']
-    return message_content
+    return {"reply":message_content}
 
 @app.get("/test/{Message}")
 async def read_root(Message:str):
