@@ -1,10 +1,12 @@
-from typing import Union
-
 from fastapi import FastAPI
 
 app = FastAPI()
 
-
-@app.post("/v1")
-async def readData(data:list):
-    return {"Hello": data}
+@app.post("/")
+async def process_messages(data: list):
+    for message in data:
+        role = message.get('role')
+        content = message.get('content')
+        # Process each message here based on the role and content
+        
+    return {"message": "Request processed successfully"}
