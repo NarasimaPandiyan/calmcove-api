@@ -5,6 +5,6 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-@app.get("/api/{Message}")
-async def read_root(Message:str):
-    return {"Hello": Message}
+@app.post("/v1")
+async def readData(data:list):
+    return {"Hello": data}
