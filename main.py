@@ -4,9 +4,10 @@ app = FastAPI()
 
 @app.post("/")
 async def process_messages(data: list):
+    sender = []
     for message in data:
         role = message.get('role')
         content = message.get('content')
-        # Process each message here based on the role and content
+        sender.append(role)
         
-    return {"message": "Request processed successfully"}
+    return {"message": str(sender)}
