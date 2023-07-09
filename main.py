@@ -6,11 +6,10 @@ from fastapi import FastAPI
 import os
 import openai
 
-from dotenv import load_dotenv
 load_dotenv()
 
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 app = FastAPI()
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.get("/v1/{Message}")
 async def read_root(Message:str):
