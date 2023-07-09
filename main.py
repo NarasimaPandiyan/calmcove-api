@@ -1,7 +1,10 @@
+from typing import Union
+
 from fastapi import FastAPI
 
 app = FastAPI()
 
+
 @app.get("/v1/{Message}")
-async def process_messages(Message: string): 
-    return {"message": Message}
+async def read_root(Message:str):
+    return {"Hello": Message}
