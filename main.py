@@ -24,18 +24,18 @@ async def read_root(Message:str):
     for i in data:
         Messages.append(i)
     
-    response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo-16k",
-    messages=Messages,
-    temperature=1,
-    max_tokens=256,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0
-    )
+    # response = openai.ChatCompletion.create(
+    # model="gpt-3.5-turbo-16k",
+    # messages=Messages,
+    # temperature=1,
+    # max_tokens=256,
+    # top_p=1,
+    # frequency_penalty=0,
+    # presence_penalty=0
+    # )
     
-    message_content = response['choices'][0]['message']['content']
-    return message_content
+    # message_content = response['choices'][0]['message']['content']
+    return Messages
 
 @app.get("/test/{Message}")
 async def read_root(Message:str):
