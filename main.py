@@ -5,10 +5,12 @@ from fastapi import FastAPI
 
 import os
 import openai
+
 from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.get("/v1/{Message}")
 async def read_root(Message:str):
@@ -21,8 +23,6 @@ async def read_root(Message:str):
     data = json.loads(data_str)
     for i in data:
         Messages.append(i)
-        
-    openai.api_key = os.getenv("OPENAI_API_KEY")
     
     response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo-16k",
@@ -36,3 +36,7 @@ async def read_root(Message:str):
     
     message_content = response['choices'][0]['message']['content']
     return message_content
+
+@app.get("/test/{Message}")
+async def read_root(Message:str):
+    return Message
